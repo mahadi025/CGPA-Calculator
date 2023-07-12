@@ -15,16 +15,28 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/addGradeButton"
+        android:id="@+id/addGradeBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add Grade" />
 
     <Button
-        android:id="@+id/saveButton"
+        android:id="@+id/saveBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Save"
         android:layout_marginTop="16dp" />
+
+    <Button
+        android:id="@+id/viewAllBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View All"
+        android:layout_marginTop="16dp"/>
+    <ListView
+        android:id="@+id/gradeList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
 
 </LinearLayout>

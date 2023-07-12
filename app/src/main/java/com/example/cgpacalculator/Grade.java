@@ -8,6 +8,8 @@ public class Grade {
         this.gradeName=gradeName;
         this.gradePoint=gradePoint;
     }
+    public Grade(){}
+
 
     public String getGradeName() {
         return gradeName;
@@ -23,5 +25,13 @@ public class Grade {
 
     public void setGradePoint(double gradePoint) {
         this.gradePoint = gradePoint;
+    }
+
+    @Override
+    public String toString() {
+        return "Grade{" +
+                "gradeName='" + gradeName + '\'' +
+                ", gradePoint=" + gradePoint +
+                '}';
     }
 }

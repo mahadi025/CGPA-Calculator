@@ -47,14 +47,6 @@ import java.util.Random;
          calculateCgpa=findViewById(R.id.calculateButton);
          setupButton = findViewById(R.id.setupButton);
 
-         SharedPreferences preferences = getSharedPreferences("GradeSheet", MODE_PRIVATE);
-         String gradeMapJson = preferences.getString("GradeMap", null);
-         if (gradeMapJson != null) {
-             Gson gson = new Gson();
-             Type type = new TypeToken<Map<String, Double>>(){}.getType();
-             gradeMap = gson.fromJson(gradeMapJson, type);
-         }
-
 
          setupButton.setOnClickListener(new View.OnClickListener() {
              @Override
