@@ -33,6 +33,7 @@ import java.util.Random;
 
      private Button setupButton;
      private int editTextCount = 0;
+     private DataBase db;
 
      private static final int GRADE_SETUP_REQUEST_CODE = 1;
 
@@ -46,7 +47,7 @@ import java.util.Random;
          addCourseButton = findViewById(R.id.addCourseButton);
          calculateCgpa=findViewById(R.id.calculateButton);
          setupButton = findViewById(R.id.setupButton);
-
+        db=new DataBase(MainActivity.this);
 
          setupButton.setOnClickListener(new View.OnClickListener() {
              @Override
@@ -67,7 +68,7 @@ import java.util.Random;
          calculateCgpa.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
-//                 calculateCGPA();
+                 calculateCGPA();
              }
          });
      }
@@ -132,10 +133,10 @@ import java.util.Random;
              EditText gradeEditText = findViewById(gradeEditTextId);
              EditText creditsEditText = findViewById(creditsEditTextId);
 
-             double grade = Double.parseDouble(String.valueOf(gradeMap.get(gradeEditText.getText().toString().toUpperCase())));
+             String gradeName = gradeEditText.getText().toString().toUpperCase();
              double credits = Double.parseDouble(creditsEditText.getText().toString());
-
-             totalGrade += grade * credits;
+             double gradePoint=db.getGradePoint(gradeName);
+             totalGrade += gradePoint * credits;
              totalCredit += credits;
          }
 

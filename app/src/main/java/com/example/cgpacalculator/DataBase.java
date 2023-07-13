@@ -1,5 +1,6 @@
 package com.example.cgpacalculator;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -75,4 +76,31 @@ public class DataBase extends SQLiteOpenHelper {
 
         return returnList;
     }
+    public double getGradePoint(String gradeName) {
+        String queryString = "SELECT " + GRADE_POINT_COLUMN + " FROM " + TABLE_NAME + " WHERE " + GRADE_NAME_COLUMN + " = \"" + gradeName + "\"";
+        System.out.println(queryString);
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(queryString, null);
+        Grade grade;
+
+        try {
+            if (cursor.moveToFirst()) {
+                // Check if the cursor has at least one row
+                @SuppressLint("Range") double gradePoint = cursor.getDouble(cursor.getColumnIndex(GRADE_POINT_COLUMN));
+                System.out.println(gradePoint);
+                grade = new Grade(gradeName, gradePoint);
+            } else {
+                grade = new Grade("-1", -1);
+            }
+        } catch (Exception e) {
+            e.printStackTrace(); // Print the stack trace to identify the issue
+            grade = new Grade("-1", -1);
+        } finally {
+            cursor.close();
+            db.close();
+        }
+
+        return grade.getGradePoint();
+    }
+
 }
